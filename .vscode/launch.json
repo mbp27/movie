@@ -1,0 +1,44 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Development",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "args": [
+                "--dart-define",
+			    "appName=Movie App Dev",
+                "--dart-define",
+			    "baseUrl=api.themoviedb.org",
+                "--dart-define",
+			    "versionApi=3",
+                "--dart-define",
+			    "apiKey=24c248ac3009004de53d6709c8ae9c16",
+                "--flavor",
+                "development"
+            ],
+        },
+        {
+            "name": "Run Production",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_production.dart",
+            "args": [
+                "--dart-define",
+			    "appName=Movie App",
+                "--dart-define",
+			    "baseUrl=api.themoviedb.org",
+                "--dart-define",
+			    "versionApi=3",
+                "--dart-define",
+			    "apiKey=24c248ac3009004de53d6709c8ae9c16",
+                "--flavor",
+                "production"
+            ],
+        },
+    ]
+}
