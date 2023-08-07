@@ -65,6 +65,9 @@ flutter run --dart-define appName='Movie Dev' --dart-define baseUrl=api.themovie
 flutter run --dart-define appName='Movie' --dart-define baseUrl=api.themoviedb.org --dart-define versionApi=3 --dart-define apiKey=APP_KEY --flavor production --target=lib/main_production.dart
 ```
 
+## Example APK
+Difficult to run this project? I have included `.apk` development and production for those of you who want to try. Enjoy!
+
 ## Flutter Gen:
 
 Generate every time you add or remove assets
