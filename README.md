@@ -13,6 +13,7 @@
 *  Detail Movie & TV Show
 *  Cache Images
 *  Shimmer Loading
+*  Responsive Design (Portrait & Landscape)
 
 ## 📸 Example Android
 <pre>
