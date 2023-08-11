@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:movie/helpers/assets.gen.dart';
+import 'package:movie/helpers/launcher_url.dart';
 import 'package:movie/helpers/utils.dart';
 import 'package:movie/presentation/screens/about/about_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -133,24 +132,7 @@ class ProfileScreen extends StatelessWidget {
                         subtitle: const Text('Bekasi, West Java, Indonesia'),
                         onTap: () async {
                           try {
-                            final Uri googleMapsUrl = Uri.parse(
-                                "https://www.google.com/maps/search/${Uri.encodeFull('Kota Bekasi')}");
-                            final Uri appleMapsUrl = Uri.parse(
-                                "https://maps.apple.com/?q=${Uri.encodeFull('Kota Bekasi')}");
-
-                            await launchUrl(googleMapsUrl);
-                            if (Platform.isIOS) {
-                              final nativeAppLaunchSucceeded = await launchUrl(
-                                appleMapsUrl,
-                                mode: LaunchMode.externalNonBrowserApplication,
-                              );
-                              if (!nativeAppLaunchSucceeded) {
-                                await launchUrl(
-                                  appleMapsUrl,
-                                  mode: LaunchMode.inAppWebView,
-                                );
-                              }
-                            }
+                            await launchMapsByAddress('Kota Bekasi');
                           } catch (e) {
                             if (!mounted) return;
                             ScaffoldMessenger.of(context)
@@ -257,7 +239,10 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         onTap: () async {
                           try {
-                            await launchUrl(uriLinkedIn);
+                            await launchUrl(
+                              uriLinkedIn,
+                              mode: LaunchMode.externalApplication,
+                            );
                           } catch (e) {
                             if (!mounted) return;
                             ScaffoldMessenger.of(context)
