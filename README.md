@@ -8,21 +8,22 @@
 [![platform](https://img.shields.io/badge/platform-Flutter-blue.svg)](https://flutter.dev/)
 
 ## Features
-*  Movies
-*  TV Shows
-*  Detail Movie & TV Show
-*  Cache Images
-*  Shimmer Loading
-*  Responsive Design (Portrait & Landscape)
+* Movies
+* TV Shows
+* Detail Movie & TV Show
+* Cache Images
+* Shimmer Loading
+* Responsive Design (Portrait & Landscape)
+* Switch Theme (Dark and Light) by App 🔥
 
 ## 📸 Example Android
 <pre>
-<img src="screenshot/android/Android-Splash.png" width="30%">   <img src="screenshot/android/Android-Movies-Loading.png" width="30%">   <img src="screenshot/android/Android-Movies.png" width="30%">   <img src="screenshot/android/Android-Movie-Detail-Loading.png" width="30%">   <img src="screenshot/android/Android-Movie-Detail.png" width="30%">   <img src="screenshot/android/Android-TVs-Loading.png" width="30%">   <img src="screenshot/android/Android-TVs.png" width="30%">   <img src="screenshot/android/Android-TV-Detail-Loading.png" width="30%">   <img src="screenshot/android/Android-TV-Detail.png" width="30%">   <img src="screenshot/android/Android-Profile.png" width="30%">   <img src="screenshot/android/Android-About.png" width="30%">
+<img src="screenshot/android/1.png" width="30%">   <img src="screenshot/android/2.png" width="30%">   <img src="screenshot/android/3.png" width="30%">   <img src="screenshot/android/4.png" width="30%">   <img src="screenshot/android/5.png" width="30%">   <img src="screenshot/android/6.png" width="30%">   <img src="screenshot/android/7.png" width="30%">   <img src="screenshot/android/8.png" width="30%">   <img src="screenshot/android/9.png" width="30%">   <img src="screenshot/android/10.png" width="30%">   <img src="screenshot/android/11.png" width="30%">
 </pre>
 
 ## 📸 Example iOS
 <pre>
-<img src="screenshot/ios/iOS-Splash.png" width="30%">   <img src="screenshot/ios/iOS-Movies-Loading.png" width="30%">   <img src="screenshot/ios/iOS-Movies.png" width="30%">   <img src="screenshot/ios/iOS-Movie-Detail-Loading.png" width="30%">   <img src="screenshot/ios/iOS-Movie-Detail.png" width="30%">   <img src="screenshot/ios/iOS-TVs-Loading.png" width="30%">   <img src="screenshot/ios/iOS-TVs.png" width="30%">   <img src="screenshot/ios/iOS-TV-Detail-Loading.png" width="30%">   <img src="screenshot/ios/iOS-TV-Detail.png" width="30%">   <img src="screenshot/ios/iOS-Profile.png" width="30%">   <img src="screenshot/ios/iOS-About.png" width="30%">
+<img src="screenshot/ios/1.png" width="30%">   <img src="screenshot/ios/2.png" width="30%">   <img src="screenshot/ios/3.png" width="30%">   <img src="screenshot/ios/4.png" width="30%">   <img src="screenshot/ios/5.png" width="30%">   <img src="screenshot/ios/6.png" width="30%">   <img src="screenshot/ios/7.png" width="30%">   <img src="screenshot/ios/8.png" width="30%">   <img src="screenshot/ios/9.png" width="30%">   <img src="screenshot/ios/10.png" width="30%">   <img src="screenshot/ios/11.png" width="30%">
 </pre>
 
 ## Quick start
@@ -67,7 +68,7 @@ flutter run --dart-define appName='Movie' --dart-define baseUrl=api.themoviedb.o
 ```
 
 ## Example APK
-Difficult to run this project? I have included `.apk` development and production for those of you who want to try [here](https://github.com/mbp27/movie/releases). Please, download the latest version. Enjoy!
+Difficult to run this project? I have included `.apk` development and production for those of you who want to try [here](https://github.com/mbp27/movie/releases). Check out the assets section and download the latest version. Enjoy!
 
 ## Flutter Gen:
 
