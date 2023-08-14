@@ -104,19 +104,25 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final backButtonBackgroundColor =
+        _isPinned ? Colors.transparent : Colors.black12;
+    final backButtonForegroundColor = _isPinned
+        ? Theme.of(context).appBarTheme.foregroundColor
+        : Colors.white;
+    final backgroundColor = Theme.of(context).focusColor;
+
     return OrientationBuilder(
       builder: (context, orientation) {
         _imageHeight = Utils.size(context).width / 2;
 
         return Scaffold(
           appBar: AppBar(
-            elevation: 0,
             title: _isPinned ? Text('${widget.television.name}') : null,
             backgroundColor: !_isPinned ? Colors.transparent : null,
-            leading: const CircleAvatar(
-              backgroundColor: Colors.black12,
-              foregroundColor: Colors.white,
-              child: BackButton(),
+            leading: CircleAvatar(
+              backgroundColor: backButtonBackgroundColor,
+              foregroundColor: backButtonForegroundColor,
+              child: const BackButton(),
             ),
           ),
           extendBodyBehindAppBar: true,
@@ -172,10 +178,10 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                             fit: StackFit.expand,
                             children: [
                               Container(
-                                color: Colors.grey.shade900,
+                                color: backgroundColor,
                                 height: _imageHeight,
                                 child: Container(
-                                  color: Colors.grey.shade900,
+                                  color: backgroundColor,
                                   child: backdropUrl != null
                                       ? FutureBuilder<File>(
                                           future:
@@ -211,32 +217,32 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                 top: _imageHeight * 0.6,
                                 left: 16.0,
                                 right: 16.0,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        offset: const Offset(0, 0),
-                                        spreadRadius: 20,
-                                        blurRadius: 40,
-                                        color: Colors.black.withOpacity(0.6),
-                                      )
-                                    ],
-                                  ),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      ClipRRect(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                            offset: const Offset(0, 0),
+                                            spreadRadius: 10,
+                                            blurRadius: 20,
+                                            color:
+                                                Colors.black.withOpacity(0.2),
+                                          )
+                                        ],
+                                      ),
+                                      child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(6.0),
                                         child: Container(
-                                          color: Colors.grey.shade900,
+                                          color: backgroundColor,
                                           height:
                                               Utils.size(context).width / 2.1,
                                           width: Utils.size(context).width / 3,
                                           child: Container(
-                                            color: Colors.grey.shade900,
+                                            color: backgroundColor,
                                             child: posterUrl != null
                                                 ? FutureBuilder<File>(
                                                     future: Utils.downloadImage(
@@ -268,8 +274,21 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(width: 16.0),
-                                      Flexible(
+                                    ),
+                                    const SizedBox(width: 16.0),
+                                    Flexible(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          boxShadow: [
+                                            BoxShadow(
+                                              offset: const Offset(0, 0),
+                                              spreadRadius: 10,
+                                              blurRadius: 20,
+                                              color:
+                                                  Colors.black.withOpacity(0.2),
+                                            )
+                                          ],
+                                        ),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -281,6 +300,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                                 maxLines: 5,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: const TextStyle(
+                                                  color: Colors.white,
                                                   fontSize: 20.0,
                                                   fontWeight: FontWeight.bold,
                                                 ),
@@ -288,6 +308,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                             ),
                                             const SizedBox(height: 2.0),
                                             Row(
+                                              mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 RatingBar(
                                                   rating: voteAverage,
@@ -297,6 +318,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                                 Text(
                                                   voteAverage.toString(),
                                                   style: const TextStyle(
+                                                    color: Colors.white,
                                                     fontSize: 18.0,
                                                   ),
                                                 ),
@@ -304,6 +326,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                             ),
                                             const SizedBox(height: 4.0),
                                             Row(
+                                              mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Text(
                                                   firstAirDate != null
@@ -311,8 +334,9 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                                           .format(firstAirDate)
                                                       : '-',
                                                   style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
                                                     fontSize: 12.0,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
                                                 const SizedBox(width: 6.0),
@@ -331,6 +355,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                                     child: Text(
                                                       status,
                                                       style: const TextStyle(
+                                                        color: Colors.white,
                                                         fontSize: 12.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -341,26 +366,32 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                               ],
                                             ),
                                             const SizedBox(height: 4.0),
-                                            Text(
-                                              '$numberOfEpisodes Episodes',
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 12.0,
+                                            Flexible(
+                                              child: Text(
+                                                '$numberOfEpisodes Episodes',
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 12.0,
+                                                ),
                                               ),
                                             ),
                                             const SizedBox(height: 4.0),
-                                            Text(
-                                              '$numberOfSeasons Seasons',
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 12.0,
+                                            Flexible(
+                                              child: Text(
+                                                '$numberOfSeasons Seasons',
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 12.0,
+                                                ),
                                               ),
                                             ),
                                           ],
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
@@ -454,7 +485,10 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                       color: Theme.of(context).primaryColor,
                       child: Text(
                         '${e.name}',
-                        style: const TextStyle(fontSize: 12.0),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12.0,
+                        ),
                       ),
                     ),
                   ))
@@ -553,7 +587,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Container(
-              color: Colors.black,
+              color: Colors.grey,
               height: 16.0,
               width: 70.0,
             ),
@@ -568,7 +602,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),
                         child: Container(
-                          color: Colors.black,
+                          color: Colors.grey,
                           height: 12.0,
                           width: e,
                         ),
@@ -590,7 +624,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Container(
-              color: Colors.black,
+              color: Colors.grey,
               height: 16.0,
               width: 60.0,
             ),
@@ -603,7 +637,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                 .map((e) => ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Container(
-                        color: Colors.black,
+                        color: Colors.grey,
                         height: 16.0,
                         width: 40.0,
                       ),
@@ -627,40 +661,52 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                 CustomShimmer(
                   child: SizedBox(
                     height: _imageHeight,
-                    child: Container(color: Colors.black),
+                    child: Container(color: Colors.grey),
                   ),
                 ),
                 Positioned(
                   top: _imageHeight * 0.6,
                   left: 16.0,
                   right: 16.0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          offset: const Offset(0, 0),
-                          spreadRadius: 20,
-                          blurRadius: 40,
-                          color: Colors.black.withOpacity(0.6),
-                        )
-                      ],
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CustomShimmer(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(0, 0),
+                              spreadRadius: 10,
+                              blurRadius: 20,
+                              color: Colors.black.withOpacity(0.2),
+                            )
+                          ],
+                        ),
+                        child: CustomShimmer(
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(6.0),
                             child: SizedBox(
                               height: Utils.size(context).width / 2.1,
                               width: Utils.size(context).width / 3,
-                              child: Container(color: Colors.black),
+                              child: Container(color: Colors.grey),
                             ),
                           ),
                         ),
-                        const SizedBox(width: 16.0),
-                        Flexible(
+                      ),
+                      const SizedBox(width: 16.0),
+                      Flexible(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                offset: const Offset(0, 0),
+                                spreadRadius: 10,
+                                blurRadius: 20,
+                                color: Colors.black.withOpacity(0.2),
+                              )
+                            ],
+                          ),
                           child: CustomShimmer(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -669,7 +715,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10.0),
                                   child: Container(
-                                    color: Colors.black,
+                                    color: Colors.grey,
                                     height: 20.0,
                                   ),
                                 ),
@@ -680,7 +726,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(10.0),
                                       child: Container(
-                                        color: Colors.black,
+                                        color: Colors.grey,
                                         height: 16.0,
                                         width: 80.0,
                                       ),
@@ -689,7 +735,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(10.0),
                                       child: Container(
-                                        color: Colors.black,
+                                        color: Colors.grey,
                                         height: 18.0,
                                         width: 40.0,
                                       ),
@@ -703,7 +749,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(10.0),
                                       child: Container(
-                                        color: Colors.black,
+                                        color: Colors.grey,
                                         height: 12.0,
                                         width: 60.0,
                                       ),
@@ -712,7 +758,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(10.0),
                                       child: Container(
-                                        color: Colors.black,
+                                        color: Colors.grey,
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 4.0,
                                           vertical: 2.0,
@@ -727,7 +773,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10.0),
                                   child: Container(
-                                    color: Colors.black,
+                                    color: Colors.grey,
                                     height: 12.0,
                                     width: 60.0,
                                   ),
@@ -736,7 +782,7 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10.0),
                                   child: Container(
-                                    color: Colors.black,
+                                    color: Colors.grey,
                                     height: 12.0,
                                     width: 50.0,
                                   ),
@@ -745,8 +791,8 @@ class _TelevisionDetailScreenState extends State<TelevisionDetailScreen> {
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],

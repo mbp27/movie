@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:movie/config.dart';
 import 'package:movie/data/repositories/movie_repository.dart';
 import 'package:movie/data/repositories/television_repository.dart';
-import 'package:movie/helpers/fonts.gen.dart';
 import 'package:movie/logic/blocs/movie_now_playing/movie_now_playing_bloc.dart';
 import 'package:movie/logic/blocs/movie_popular/movie_popular_bloc.dart';
 import 'package:movie/logic/blocs/movie_upcoming/movie_upcoming_bloc.dart';
 import 'package:movie/logic/blocs/television_on_the_air/television_on_the_air_bloc.dart';
 import 'package:movie/logic/blocs/television_popular/television_popular_bloc.dart';
+import 'package:movie/logic/cubits/theme/theme_cubit.dart';
 import 'package:movie/presentation/components/custom_scroll_behavior.dart';
-import 'package:movie/presentation/components/material_color_generator.dart';
-import 'package:movie/presentation/designs/app_color.dart';
+import 'package:movie/presentation/designs/app_theme.dart';
 import 'package:movie/presentation/router/app_router.dart';
 import 'package:movie/presentation/screens/splash/splash_screen.dart';
+import 'package:path_provider/path_provider.dart';
 
 Future<void> mainCommon(String environment) async {
   WidgetsFlutterBinding.ensureInitialized();
   PaintingBinding.instance.imageCache.maximumSizeBytes = 1000 << 20;
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getTemporaryDirectory(),
+  );
   runApp(const MyApp());
 }
 
@@ -62,30 +66,41 @@ class MyApp extends StatelessWidget {
               televisionRepository: context.read<TelevisionRepository>(),
             ),
           ),
+          BlocProvider<ThemeCubit>(
+            create: (context) => ThemeCubit(),
+          ),
         ],
-        child: MaterialApp(
-          darkTheme: ThemeData(
-            appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
-            brightness: Brightness.dark,
-            fontFamily: FontFamily.archivo,
-            primaryColor: AppColor.primary,
-            primarySwatch: MaterialColorGenerator.from(AppColor.primary),
-            scaffoldBackgroundColor: Colors.black,
-            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-              backgroundColor: Colors.black,
-              selectedItemColor: AppColor.primary,
-            ),
-            useMaterial3: false,
-          ),
-          themeMode: ThemeMode.dark,
-          debugShowCheckedModeBanner: false,
-          title: Config.appName,
-          onGenerateRoute: AppRouter().onGenerateRoute,
-          initialRoute: SplashScreen.routeName,
-          builder: (context, child) => ScrollConfiguration(
-            behavior: CustomScrollBehavior(),
-            child: child ?? Container(),
-          ),
+        child: Builder(
+          builder: (context) {
+            final themeMode = context.select((ThemeCubit cubit) => cubit.state);
+
+            return MaterialApp(
+              // darkTheme: ThemeData(
+              //   appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
+              //   brightness: Brightness.dark,
+              //   fontFamily: FontFamily.archivo,
+              //   primaryColor: AppColor.primary,
+              //   primarySwatch: MaterialColorGenerator.from(AppColor.primary),
+              //   scaffoldBackgroundColor: Colors.black,
+              //   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+              //     backgroundColor: Colors.black,
+              //     selectedItemColor: AppColor.primary,
+              //   ),
+              //   useMaterial3: false,
+              // ),
+              theme: AppTheme.light,
+              darkTheme: AppTheme.dark,
+              themeMode: themeMode,
+              debugShowCheckedModeBanner: false,
+              title: Config.appName,
+              onGenerateRoute: AppRouter().onGenerateRoute,
+              initialRoute: SplashScreen.routeName,
+              builder: (context, child) => ScrollConfiguration(
+                behavior: CustomScrollBehavior(),
+                child: child ?? Container(),
+              ),
+            );
+          },
         ),
       ),
     );

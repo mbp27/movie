@@ -3,7 +3,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:movie/helpers/assets.gen.dart';
 import 'package:movie/helpers/launcher_url.dart';
 import 'package:movie/helpers/utils.dart';
-import 'package:movie/presentation/screens/about/about_screen.dart';
+import 'package:movie/presentation/components/custom_app_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,22 +12,15 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mounted = context.mounted;
+    final size = Utils.size(context);
+    final backgroundColor = Theme.of(context).focusColor;
     final uriEmail = Uri.parse('mailto:prasetyobagus27@gmail.com');
     final uriGithub = Uri.parse('https://github.com/mbp27');
     final uriLinkedIn = Uri.parse(
         'https://www.linkedin.com/in/muhamad-bagus-prasetyo-512b3517b/');
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        actions: [
-          IconButton(
-            onPressed: () =>
-                Navigator.of(context).pushNamed(AboutScreen.routeName),
-            icon: const Icon(Icons.info_outline),
-          ),
-        ],
-      ),
+      appBar: CustomAppBar(title: const Text('Profile')),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -36,8 +29,8 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Center(
                 child: CircleAvatar(
-                  radius: Utils.size(context).width / 7,
-                  backgroundColor: Colors.grey.shade900,
+                  radius: size.width / 7,
+                  backgroundColor: backgroundColor,
                   child: ClipOval(
                     child: Assets.images.profile.image(),
                   ),
@@ -75,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                   const SizedBox(height: 16.0),
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade900,
+                      color: backgroundColor,
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     padding: const EdgeInsets.all(16.0),
@@ -102,7 +95,7 @@ class ProfileScreen extends StatelessWidget {
                   Column(
                     children: [
                       ListTile(
-                        tileColor: Colors.grey.shade900,
+                        tileColor: backgroundColor,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(10.0),
@@ -113,7 +106,7 @@ class ProfileScreen extends StatelessWidget {
                         subtitle: const Text('Muhamad Bagus Prasetyo'),
                       ),
                       ListTile(
-                        tileColor: Colors.grey.shade900,
+                        tileColor: backgroundColor,
                         leading: Icon(MdiIcons.calendar),
                         title: const Text('Age'),
                         subtitle: Text(
@@ -121,7 +114,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       ListTile(
-                        tileColor: Colors.grey.shade900,
+                        tileColor: backgroundColor,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             bottom: Radius.circular(10.0),
@@ -166,7 +159,7 @@ class ProfileScreen extends StatelessWidget {
                   Column(
                     children: [
                       ListTile(
-                        tileColor: Colors.grey.shade900,
+                        tileColor: backgroundColor,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(10.0),
@@ -198,7 +191,7 @@ class ProfileScreen extends StatelessWidget {
                         },
                       ),
                       ListTile(
-                        tileColor: Colors.grey.shade900,
+                        tileColor: backgroundColor,
                         leading: Icon(MdiIcons.github),
                         title: const Text('Github'),
                         subtitle: const Text(
@@ -225,7 +218,7 @@ class ProfileScreen extends StatelessWidget {
                         },
                       ),
                       ListTile(
-                        tileColor: Colors.grey.shade900,
+                        tileColor: backgroundColor,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             bottom: Radius.circular(10.0),

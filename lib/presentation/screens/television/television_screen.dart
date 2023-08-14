@@ -9,10 +9,10 @@ import 'package:movie/logic/blocs/television_on_the_air/television_on_the_air_bl
 import 'package:movie/logic/blocs/television_popular/television_popular_bloc.dart';
 import 'package:movie/presentation/components/banner.dart';
 import 'package:movie/presentation/components/banner_loading.dart';
+import 'package:movie/presentation/components/custom_app_bar.dart';
 import 'package:movie/presentation/components/custom_shimmer.dart';
 import 'package:movie/presentation/components/poster.dart';
 import 'package:movie/presentation/components/poster_loading.dart';
-import 'package:movie/presentation/screens/about/about_screen.dart';
 import 'package:movie/presentation/screens/television_detail/television_detail_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -56,16 +56,7 @@ class _TelevisionScreenState extends State<TelevisionScreen>
     super.build(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('TV Shows'),
-        actions: [
-          IconButton(
-            onPressed: () =>
-                Navigator.of(context).pushNamed(AboutScreen.routeName),
-            icon: const Icon(Icons.info_outline),
-          ),
-        ],
-      ),
+      appBar: CustomAppBar(title: const Text('TV Shows')),
       body: RefreshIndicator(
         onRefresh: _onRefresh,
         child: SingleChildScrollView(

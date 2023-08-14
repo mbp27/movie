@@ -10,10 +10,10 @@ import 'package:movie/logic/blocs/movie_popular/movie_popular_bloc.dart';
 import 'package:movie/logic/blocs/movie_upcoming/movie_upcoming_bloc.dart';
 import 'package:movie/presentation/components/banner.dart';
 import 'package:movie/presentation/components/banner_loading.dart';
+import 'package:movie/presentation/components/custom_app_bar.dart';
 import 'package:movie/presentation/components/custom_shimmer.dart';
 import 'package:movie/presentation/components/poster.dart';
 import 'package:movie/presentation/components/poster_loading.dart';
-import 'package:movie/presentation/screens/about/about_screen.dart';
 import 'package:movie/presentation/screens/movie_detail/movie_detail_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -64,16 +64,7 @@ class _MovieScreenState extends State<MovieScreen>
     super.build(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Movies'),
-        actions: [
-          IconButton(
-            onPressed: () =>
-                Navigator.of(context).pushNamed(AboutScreen.routeName),
-            icon: const Icon(Icons.info_outline),
-          ),
-        ],
-      ),
+      appBar: CustomAppBar(title: const Text('Movies')),
       body: RefreshIndicator(
         onRefresh: _onRefresh,
         child: SingleChildScrollView(

@@ -24,6 +24,7 @@ class Poster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imagePath = imageUrl;
+    final backgroundColor = Theme.of(context).focusColor;
 
     return GestureDetector(
       onTap: onTap,
@@ -38,7 +39,7 @@ class Poster extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(6.0),
                 child: Container(
-                  color: Colors.grey.shade900,
+                  color: backgroundColor,
                   child: imagePath != null
                       ? FutureBuilder<File>(
                           future: Utils.downloadImage(imagePath),

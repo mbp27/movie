@@ -19,6 +19,7 @@ class Banner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imagePath = imageUrl;
+    final backgroundColor = Theme.of(context).focusColor;
 
     return GestureDetector(
       onTap: onTap,
@@ -28,7 +29,7 @@ class Banner extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             Container(
-              color: Colors.grey.shade900,
+              color: backgroundColor,
               child: imagePath != null
                   ? FutureBuilder<File>(
                       future: Utils.downloadImage(imagePath),
@@ -75,9 +76,9 @@ class Banner extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       offset: const Offset(0, 0),
-                      spreadRadius: 20,
-                      blurRadius: 40,
-                      color: Colors.black.withOpacity(0.6),
+                      spreadRadius: 10,
+                      blurRadius: 20,
+                      color: Colors.black.withOpacity(0.2),
                     )
                   ],
                 ),
@@ -87,6 +88,7 @@ class Banner extends StatelessWidget {
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 26.0,
                   ),

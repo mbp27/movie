@@ -7,7 +7,7 @@ class BannerLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10.0),
-      child: Container(color: Colors.black),
+      child: Container(color: Colors.grey),
     );
   }
 }

@@ -21,7 +21,7 @@ class ReviewLoadingWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Container(
-                  color: Colors.black,
+                  color: Colors.grey,
                   height: 14.0,
                   width: 100.0,
                 ),
@@ -33,7 +33,7 @@ class ReviewLoadingWidget extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
                     child: Container(
-                      color: Colors.black,
+                      color: Colors.grey,
                       height: 14.0,
                       width: 70.0,
                     ),
@@ -42,7 +42,7 @@ class ReviewLoadingWidget extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
                     child: Container(
-                      color: Colors.black,
+                      color: Colors.grey,
                       height: 12.0,
                       width: 70.0,
                     ),
@@ -65,7 +65,7 @@ class ReviewLoadingWidget extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10.0),
                             child: Container(
-                              color: Colors.black,
+                              color: Colors.grey,
                               height: 12.0,
                               width: e,
                             ),
@@ -78,7 +78,7 @@ class ReviewLoadingWidget extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Container(
-                    color: Colors.black,
+                    color: Colors.grey,
                     height: 12.0,
                     width: 60,
                   ),
