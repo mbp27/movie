@@ -67,7 +67,7 @@ flutter run --dart-define appName='Movie' --dart-define baseUrl=api.themoviedb.o
 ```
 
 ## Example APK
-Difficult to run this project? I have included `.apk` development and production for those of you who want to try. Enjoy!
+Difficult to run this project? I have included `.apk` development and production for those of you who want to try [here](https://github.com/mbp27/movie/releases). Please, download the latest version. Enjoy!
 
 ## Flutter Gen:
 
