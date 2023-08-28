@@ -50,17 +50,17 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             activeIcon: Icon(Icons.movie),
             icon: Icon(Icons.movie_outlined),
-            label: 'Movies',
+            label: MovieScreen.title,
           ),
           BottomNavigationBarItem(
             activeIcon: Icon(Icons.tv),
             icon: Icon(Icons.tv),
-            label: 'TVs',
+            label: TelevisionScreen.title,
           ),
           BottomNavigationBarItem(
             activeIcon: Icon(Icons.person),
             icon: Icon(Icons.person_outline),
-            label: 'Profile',
+            label: ProfileScreen.title,
           ),
         ],
         onTap: (int index) {

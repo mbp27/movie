@@ -1,6 +1,6 @@
 part of 'television_on_the_air_bloc.dart';
 
-abstract class TelevisionOnTheAirState extends Equatable {
+class TelevisionOnTheAirState extends Equatable {
   const TelevisionOnTheAirState();
 
   @override

@@ -9,6 +9,8 @@ import 'package:url_launcher/url_launcher.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
+  static const String title = 'Profile';
+
   @override
   Widget build(BuildContext context) {
     final mounted = context.mounted;
@@ -20,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
         'https://www.linkedin.com/in/muhamad-bagus-prasetyo-512b3517b/');
 
     return Scaffold(
-      appBar: CustomAppBar(title: const Text('Profile')),
+      appBar: CustomAppBar(title: const Text(title)),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

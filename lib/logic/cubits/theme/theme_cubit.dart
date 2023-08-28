@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -22,13 +21,13 @@ class ThemeCubit extends Cubit<ThemeMode> with HydratedMixin {
       AppTheme.setStatusBarAndNavigationBarColors(themeMode);
 
   @override
-  ThemeMode? fromJson(Map<String, dynamic> json) {
+  ThemeMode fromJson(Map<String, dynamic> json) {
     return ThemeMode.values
-        .firstWhereOrNull((element) => element.name == json['value']);
+        .firstWhere((element) => element.name == json['value']);
   }
 
   @override
-  Map<String, dynamic>? toJson(ThemeMode state) {
+  Map<String, dynamic> toJson(ThemeMode state) {
     return {'value': state.name};
   }
 }

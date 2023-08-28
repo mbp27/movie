@@ -19,6 +19,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class TelevisionScreen extends StatefulWidget {
   const TelevisionScreen({super.key});
 
+  static const String title = 'TV Shows';
+
   @override
   State<TelevisionScreen> createState() => _TelevisionScreenState();
 }
@@ -56,7 +58,7 @@ class _TelevisionScreenState extends State<TelevisionScreen>
     super.build(context);
 
     return Scaffold(
-      appBar: CustomAppBar(title: const Text('TV Shows')),
+      appBar: CustomAppBar(title: const Text(TelevisionScreen.title)),
       body: RefreshIndicator(
         onRefresh: _onRefresh,
         child: SingleChildScrollView(

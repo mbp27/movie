@@ -20,6 +20,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class MovieScreen extends StatefulWidget {
   const MovieScreen({super.key});
 
+  static const String title = 'Movies';
+
   @override
   State<MovieScreen> createState() => _MovieScreenState();
 }
@@ -64,7 +66,7 @@ class _MovieScreenState extends State<MovieScreen>
     super.build(context);
 
     return Scaffold(
-      appBar: CustomAppBar(title: const Text('Movies')),
+      appBar: CustomAppBar(title: const Text(MovieScreen.title)),
       body: RefreshIndicator(
         onRefresh: _onRefresh,
         child: SingleChildScrollView(

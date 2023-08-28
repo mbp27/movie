@@ -70,39 +70,33 @@ class MyApp extends StatelessWidget {
             create: (context) => ThemeCubit(),
           ),
         ],
-        child: Builder(
-          builder: (context) {
-            final themeMode = context.select((ThemeCubit cubit) => cubit.state);
-
-            return MaterialApp(
-              // darkTheme: ThemeData(
-              //   appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
-              //   brightness: Brightness.dark,
-              //   fontFamily: FontFamily.archivo,
-              //   primaryColor: AppColor.primary,
-              //   primarySwatch: MaterialColorGenerator.from(AppColor.primary),
-              //   scaffoldBackgroundColor: Colors.black,
-              //   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-              //     backgroundColor: Colors.black,
-              //     selectedItemColor: AppColor.primary,
-              //   ),
-              //   useMaterial3: false,
-              // ),
-              theme: AppTheme.light,
-              darkTheme: AppTheme.dark,
-              themeMode: themeMode,
-              debugShowCheckedModeBanner: false,
-              title: Config.appName,
-              onGenerateRoute: AppRouter().onGenerateRoute,
-              initialRoute: SplashScreen.routeName,
-              builder: (context, child) => ScrollConfiguration(
-                behavior: CustomScrollBehavior(),
-                child: child ?? Container(),
-              ),
-            );
-          },
-        ),
+        child: const MyAppView(),
       ),
+    );
+  }
+}
+
+class MyAppView extends StatelessWidget {
+  const MyAppView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ThemeCubit, ThemeMode>(
+      builder: (context, themeMode) {
+        return MaterialApp(
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          themeMode: themeMode,
+          debugShowCheckedModeBanner: false,
+          title: Config.appName,
+          onGenerateRoute: AppRouter().onGenerateRoute,
+          initialRoute: SplashScreen.routeName,
+          builder: (context, child) => ScrollConfiguration(
+            behavior: CustomScrollBehavior(),
+            child: child ?? Container(),
+          ),
+        );
+      },
     );
   }
 }
